@@ -1,11 +1,8 @@
 ## A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program
 
-<!-- badge: start -->
-
 ![license](https://img.shields.io/badge/license-apache-yellow)
 
-<!-- badge: end -->
-
+**Date repository last updated**: January 14, 2022
 
 ### Authors
 
@@ -28,6 +25,48 @@
 ### Project details
 The National Cancer Act of 1971 created a process to recognize the leadership, facilities, and research efforts at cancer centers in the United States. National Cancer Institute (NCI)-designated Cancer Centers define and describe a catchment area that they tailor specific scientific and community engagement activities. We geographically define and display a national map of 63 NCI-designated Cancer Center catchment areas as well as demonstrate how publicly available data sets can be linked to each catchment area. 
 
+#### Project timeframe
+
+<table>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<td><p align="center">2016-2021</p></td>
+<td>Fiscal years of the P30 Cancer Center Support Grant with NCI-designated Cancer Center catchment areas</td>
+</tr>
+<td><p align="center">2015-2019</p></td>
+<td>U.S. Census Bureau American Community Survey used for data linkages</td>
+</tr>
+<td><p align="center">2018</p></td>
+<td>U.S. Census Bureau Topologically Integrated Geographic Encoding and Referencing (TIGER)/Line database used for generating the NCI-designated Cancer Center catchment area boundaries</td>
+</tr>
+<td><p align="center">March 2020</p></td>
+<td>Project Initiation</td>
+</tr>
+<td><p align="center">May 2021</p></td>
+<td>NCI-designated Cancer Center directors were asked for updates to their center's catchment area definition</td>
+</tr>
+<td><p align="center">October 2021</p></td>
+<td>Initial manuscript submission for peer-review</td>
+</tr>
+<td><p align="center">January 2022</p></td>
+<td>Launch of the [NCI web tool](INSERTHOTLINKHERE). Manuscript accepted in a peer-reviewed journal</td>
+</tr>
+<td><p align="center">TBD</p></td>
+<td>Manuscript published in a peer-reviewed journal</td>
+</tr>
+
+</tbody>
+<table>
+
 ### R-scripts included in this repository
 
 This repository includes R-scripts use to render the geographical figures found in the following peer-reviewed manuscript:
@@ -36,8 +75,8 @@ This repository includes R-scripts use to render the geographical figures found 
 
 <table>
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col width="20%" />
+<col width="80%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -46,25 +85,25 @@ This repository includes R-scripts use to render the geographical figures found 
 </tr>
 </thead>
 <tbody>
-<td><code>catchments.R</code></td>
-<td>Generate the NCI-designated Cancer Center catchment areas. Requires two data sets to run (not included). See notes within. Or download NCI-designated Cancer Center catchment areas shapefiles from the [NCI website](INSERTHOTLINK)</td>
+<td><p align="center"><code>catchments.R</code></td>
+<td>Generate the NCI-designated Cancer Center catchment areas. Requires two data sets to run (not included). See notes within. Or download NCI-designated Cancer Center catchment areas shapefiles from the [NCI web tool](INSERTHOTLINKHERE)</td>
 </tr>
-<td><code>Figure1.R</code></td>
+<td><p align="center"><code>Figure1.R</code></p></td>
 <td>Generate Figure 1</td>
 </tr>
-<td><code>Figure2.R</code></td>
+<td><p align="center"><code>Figure2.R</code></p></td>
 <td>Generate Figure 2</td>
 </tr>
-<td><code>Figure3.R</code></td>
+<td><p align="center"><code>Figure3.R</code></p></td>
 <td>Generate Figure 3</td>
 </tr>
-<td><code>Supplemental1.R</code></td>
+<td><p align="center"><code>Supplemental1.R</code></p></td>
 <td>Generate Supplemental Figure 1</td>
 </tr>
-<td><code>Supplemental2.R</code></td>
+<td><p align="center"><code>Supplemental2.R</code></p></td>
 <td>Generate Supplemental Figure 2</td>
 </tr>
-<td><code>Supplemental3.R</code></td>
+<td><p align="center"><code>Supplemental3.R</code></p></td>
 <td>Generate Supplemental Figure 3</td>
 </tr>
 </tbody>
