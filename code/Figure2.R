@@ -2,7 +2,7 @@
 # NCI-Designated Cancer Center Catchment Areas
 # -------------------------------------------- #
 #
-# Created by: Ian Buller, Ph.D., M.A.
+# Created by: Ian Buller, Ph.D., M.A. (GitHub: @idblr)
 # Created on: January 12, 2022
 #
 # Most recently modified by:
