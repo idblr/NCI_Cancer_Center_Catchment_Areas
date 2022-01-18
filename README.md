@@ -2,7 +2,7 @@
 
 ![license](https://img.shields.io/badge/license-apache-yellow)
 
-**Date repository last updated**: January 14, 2022
+**Date repository last updated**: January 18, 2022
 
 ### Authors
 
@@ -58,7 +58,10 @@ The National Cancer Act of 1971 created a process to recognize the leadership, f
 <td>Initial manuscript submission for peer-review</td>
 </tr>
 <td><p align="center">January 2022</p></td>
-<td>Launch of the [NCI web tool](INSERTHOTLINKHERE). Manuscript accepted in a peer-reviewed journal</td>
+<td>Launch of the Catchment Areas of NCI-Designated Cancer Centers web application (see data availabilty section below).</td>
+</tr>
+<td><p align="center">TBD</p></td>
+<td>Manuscript accepted in a peer-reviewed journal</td>
 </tr>
 <td><p align="center">TBD</p></td>
 <td>Manuscript published in a peer-reviewed journal</td>
@@ -85,8 +88,8 @@ This repository includes R-scripts use to render the geographical figures found 
 </tr>
 </thead>
 <tbody>
-<td><p align="center"><code>catchments.R</code></td>
-<td>Generate the NCI-designated Cancer Center catchment areas. Requires two data sets to run (not included). See notes within. Or download NCI-designated Cancer Center catchment areas shapefiles from the [NCI web tool](INSERTHOTLINKHERE)</td>
+<td><p align="center"><code>Catchments.R</code></td>
+<td>Generate the NCI-designated Cancer Center catchment areas. Requires two data sets to run (not included; see notes within or in the data availability section below).</td>
 </tr>
 <td><p align="center"><code>Figure1.R</code></p></td>
 <td>Generate Figure 1</td>
@@ -108,6 +111,10 @@ This repository includes R-scripts use to render the geographical figures found 
 </tr>
 </tbody>
 <table>
+
+### Data availability
+
+The NCI-designated Cancer Center catchment areas shapefiles are downloadable from the [Catchment Areas of NCI-Designated Cancer Centers web application](INSERT_HOTLINK_HERE) hosted on the [GIS Portal for Cancer Research](https://www98.imsweb.com/) by the [National Cancer Institute](https://www.cancer.gov/).
 
 ### Questions?
 
