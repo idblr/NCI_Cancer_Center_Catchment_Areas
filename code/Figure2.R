@@ -5,13 +5,14 @@
 # Created by: Ian Buller, Ph.D., M.A. (GitHub: @idblr)
 # Created on: January 12, 2022
 #
-# Most recently modified by:
-# Most recently modified on:
+# Most recently modified by: @idblr
+# Most recently modified on: January 31, 2022
 #
 # Notes:
 # A) Code to generate Figure 2 in the CEBP Manuscript
 # B) For the n=63 Cancer Centers and Comprehensive Cancer Centers only (excludes Basic Laboratories and Pediatric Cancer Centers)
 # C) Definitions as of July 2021
+# D) 2022/01/31: Shapefiles are available for download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
 # -------------------------------------------- #
 
 ####################
@@ -27,7 +28,7 @@
 ### E) "proj_l48_counties" an 'sf' object of the 2018 conterminous U.S.
 ### F) "proj_coast" an 'sf' object of the U.S. coastline
 ### G) "not_l48" a 'vector' object of names of non-conterminous U.S. States
-source("code/catchments.R")
+source("code/Catchments.R")
 
 #######################
 # ADDITIONAL PACKAGES #

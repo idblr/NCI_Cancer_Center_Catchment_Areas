@@ -2,7 +2,7 @@
 
 ![license](https://img.shields.io/badge/license-apache-yellow)
 
-**Date repository last updated**: January 18, 2022
+**Date repository last updated**: January 31, 2022
 
 ### Authors
 
@@ -40,13 +40,13 @@ The National Cancer Act of 1971 created a process to recognize the leadership, f
 </thead>
 <tbody>
 <td><p align="center">2016-2021</p></td>
-<td>Fiscal years of the P30 Cancer Center Support Grant with NCI-designated Cancer Center catchment areas</td>
+<td>Fiscal years of the <a href="https://www.cancer.gov/research/infrastructure/cancer-centers/">P30 Cancer Center Support Grant</a> with NCI-designated Cancer Center catchment areas</td>
 </tr>
 <td><p align="center">2015-2019</p></td>
-<td>U.S. Census Bureau American Community Survey used for data linkages</td>
+<td><a href="https://www.census.gov/newsroom/press-kits/2020/acs-5-year.html/">U.S. Census Bureau American Community Survey</a> used for data linkages</td>
 </tr>
 <td><p align="center">2018</p></td>
-<td>U.S. Census Bureau Topologically Integrated Geographic Encoding and Referencing (TIGER)/Line database used for generating the NCI-designated Cancer Center catchment area boundaries</td>
+<td><a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2018.html/">U.S. Census Bureau Topologically Integrated Geographic Encoding and Referencing (TIGER)/Line</a> database used for generating the NCI-designated Cancer Center catchment area boundaries</td>
 </tr>
 <td><p align="center">March 2020</p></td>
 <td>Project Initiation</td>
@@ -55,16 +55,16 @@ The National Cancer Act of 1971 created a process to recognize the leadership, f
 <td>NCI-designated Cancer Center directors were asked for updates to their center's catchment area definition</td>
 </tr>
 <td><p align="center">October 2021</p></td>
-<td>Initial manuscript submission for peer-review</td>
+<td>Initial manuscript submission to <a href="https://cebp.aacrjournals.org/">Cancer Epidemiology, Biomarkers & Prevention</a> for peer-review</td>
 </tr>
 <td><p align="center">January 2022</p></td>
-<td>Launch of the Catchment Areas of NCI-Designated Cancer Centers web application (see data availabilty section below).</td>
+<td>Manuscript accepted by <a href="https://cebp.aacrjournals.org/">Cancer Epidemiology, Biomarkers & Prevention</a></td>
+</tr>
+<td><p align="center">January 2022</p></td>
+<td>Launch of the <a href="https://gis.cancer.gov/ncicatchment/">Catchment Areas of NCI-Designated Cancer Centers</a> web application (see data availability section below).</td>
 </tr>
 <td><p align="center">TBD</p></td>
-<td>Manuscript accepted in a peer-reviewed journal</td>
-</tr>
-<td><p align="center">TBD</p></td>
-<td>Manuscript published in a peer-reviewed journal</td>
+<td>Manuscript published in <a href="https://cebp.aacrjournals.org/">Cancer Epidemiology, Biomarkers & Prevention</a></td>
 </tr>
 
 </tbody>
@@ -74,7 +74,9 @@ The National Cancer Act of 1971 created a process to recognize the leadership, f
 
 This repository includes R-scripts use to render the geographical figures found in the following peer-reviewed manuscript:
 
-[INSERT SUGGESTED CITATION HERE]
+DelNero PF, Buller ID (co-first), Jones RR, Tatalovich Z, Vanderpool RC, Ciolino HP, Croyle RT. A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program. Cancer Epidemiology, Biomarkers & Prevention **2022**; *In Press* Available OnlineFirst at DOI:<a href="https://cebp.aacrjournals.org/content/early/2022/01/31/1055-9965.EPI-21-1230">10.1158/1055-9965.EPI-21-1230</a>.
+
+with a suggested in-text citation as: (DelNero & Buller _et al._, 2022)
 
 <table>
 <colgroup>
@@ -114,7 +116,7 @@ This repository includes R-scripts use to render the geographical figures found 
 
 ### Data availability
 
-The NCI-designated Cancer Center catchment areas shapefiles are downloadable from the [Catchment Areas of NCI-Designated Cancer Centers web application](INSERT_HOTLINK_HERE) hosted on the [GIS Portal for Cancer Research](https://www98.imsweb.com/) by the [National Cancer Institute](https://www.cancer.gov/).
+Shapefiles for the NCI-designated Cancer Center locations and catchment areas are available for download from the [Catchment Areas of NCI-Designated Cancer Centers](https://gis.cancer.gov/ncicatchment/) web application hosted on the [GIS Portal for Cancer Research](https://gis.cancer.gov/) by the [National Cancer Institute](https://www.cancer.gov/).
 
 ### Questions?
 

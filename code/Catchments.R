@@ -5,14 +5,15 @@
 # Created by: Ian Buller, Ph.D., M.A. (GitHub: @idblr)
 # Created on: January 12, 2022
 #
-# Most recently modified by:
-# Most recently modified on:
+# Most recently modified by: @idblr
+# Most recently modified on: January 31, 2022
 #
 # Notes:
 # A) Code to generate the shapefiles for the NCI-Designated Cancer Center Catchment Areas
 # B) Code to import the NCI-Designated Cancer Center
 # C) For the n=63 Cancer Centers and Comprehensive Cancer Centers only (excludes Basic Laboratories and Pediatric Cancer Centers)
 # D) Definitions as of July 2021
+# E) 2022/01/31: Shapefiles are available for download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
 # -------------------------------------------- #
 
 ############
