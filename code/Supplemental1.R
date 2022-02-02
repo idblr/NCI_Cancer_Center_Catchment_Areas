@@ -6,7 +6,7 @@
 # Created on: January 12, 2022
 #
 # Most recently modified by: @idblr
-# Most recently modified on: January 31, 2022
+# Most recently modified on: February 2, 2022
 #
 # Notes:
 # A) Code to generate Supplemental Figure 1 in the CEBP Manuscript
@@ -15,11 +15,32 @@
 # D) 2022/01/31: Shapefiles are available for download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
 # -------------------------------------------- #
 
+############
+# PACKAGES #
+############
+
+loadedPackages <- c("cowplot", "dplyr", "ggplot2", "sf", "tigris", "utils")
+suppressMessages(invisible(lapply(loadedPackages, library, character.only = TRUE)))
+
 ####################
 # DATA IMPORTATION #
 ####################
 
-# Use the code found in 'catchments.R' file
+# Option 1: Shapefiles are available to download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
+## After downloading and placing in a subdirectory called "data":
+### A) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
+utils::unzip(zipfile = "data/NCI_Cancer_Center_Point_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
+cancer_centers <- sf::read_sf(dsn = "NCI_Cancer_Center_Point.shp")
+
+### B) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
+utils::unzip(zipfile = "data/NCI_Catchment_Area_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
+catchments <- sf::read_sf(dsn = "NCI_Catchment_Area.shp")
+
+### C) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
+utils::unzip(zipfile = "data/NCI_County_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
+proj_counties <- sf::read_sf(dsn = "US_County.shp")
+
+# Option 2: Use the code found in 'catchments.R' file
 ## Loads seven objects
 ### A) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
 ### B) 'catchments' an 'sf' object of the NCI-Designated Cancer Center Catchment Areas
@@ -28,14 +49,9 @@
 ### E) "proj_l48_counties" an 'sf' object of the 2018 conterminous U.S.
 ### F) "proj_coast" an 'sf' object of the U.S. coastline
 ### G) "not_l48" a 'vector' object of names of non-conterminous U.S. States
-source("code/Catchments.R")
-
-#######################
-# ADDITIONAL PACKAGES #
-#######################
-
-loadedPackages <- c("cowplot", "dplyr", "ggplot2", "sf")
-suppressMessages(invisible(lapply(loadedPackages, library, character.only = TRUE)))
+#source("code/Catchments.R") # uncomment to generate catchment information from source
+# Note: size of catchments are in square kilometers ("area") but downloadable version is in square miles ("Area_Miles")
+# Note: the ID for counties are "GEOID" but downloadable version "FIPSN"
 
 ############
 # SETTINGS #
@@ -48,31 +64,32 @@ sf::sf_use_s2(FALSE)
 # DATA PROCESSING #
 ###################
 
+# Fix FIPS to include leading 0 for states with STATE FIPS < 10
+proj_counties$FIPSN <- stringr::str_pad(proj_counties$FIPSN, 5, "left", "0")
+
 # Order catchment area by descending size
 ## Will plot larger catchments first (lower level when stacked by ggplot2)
-order_catch <- catchments[order(-catchments$area), ]
+order_catch <- catchments[order(-catchments$Area_Miles), ]
 
 # Transform CRS to Albers Equal Area Conic Projection
 aeac_centers <- sf::st_transform(cancer_centers, crs = 2163) # projected catchment center locations
 aeac_catch <- sf::st_transform(order_catch, crs = 2163) # projected catchment areas
-
-# Lower 48 Shapefiles
-#proj_l48_states <- proj_states[proj_states$NAME %notin% not_l48, ]
-#proj_l48s_coast <- sf::st_intersection(proj_l48_states, proj_coast) # clip by US coastal boundary
-proj_l48c_coast <- sf::st_intersection(proj_l48_counties, proj_coast) # clip by US coastal boundary
+proj_l48c_coast <- sf::st_transform(proj_counties, crs = 2163) # projected catchment areas
 
 # Separate by NCI designation
 ## NCI-Designated Cancer Center Locations
 aeac_c <- aeac_centers[aeac_centers$name != "University of Hawai'i Cancer Center", ] 
 ## NCI-Designated Cancer Center Catchments
-aeac_cc <- aeac_catch[aeac_catch$type == "Clinical Cancer Center" & aeac_catch$name != "University of Hawai'i Cancer Center", ]
+aeac_cc <- aeac_catch[aeac_catch$type == "Cancer Center" & aeac_catch$name != "University of Hawai'i Cancer Center", ]
 ## NCI-Designated Comprehensive Cancer Center Catchments
 aeac_ccc <- aeac_catch[aeac_catch$type == "Comprehensive Cancer Center", ]
 
 # New York City, New York Metropolitan Area NCI-Designated Cancer Center Catchment Areas
-nycfips <- c("36085", "36059", "36081", "36047", "36061", "36059", "36005", "36119", "36087", "36103", "09001", "34003", "34017", "34013", "34031", "34039", "34027", "34023")
-nycounty <- proj_l48c_coast[proj_l48c_coast$GEOID %in% nycfips[5], ]
-nyca <- proj_l48c_coast[proj_l48c_coast$GEOID %in% nycfips, ]
+nycfips <- c("36085", "36059", "36081", "36047", "36061", "36059",
+             "36005", "36119", "36087", "36103", "09001", "34003",
+             "34017", "34013", "34031", "34039", "34027", "34023")
+nycounty <- proj_l48c_coast[proj_l48c_coast$FIPSN %in% nycfips[5], ]
+nyca <- proj_l48c_coast[proj_l48c_coast$FIPSN %in% nycfips, ]
 proj_nycounty <- sf::st_transform(nycounty, crs = 2263)
 proj_nyca <- sf::st_transform(nyca, crs = 2263)
 ny_bb <- sf::st_as_sfc(sf::st_bbox(proj_nycounty))
@@ -89,8 +106,10 @@ nycnci <- c("Laura & Isaac Perlmutter Cancer Center at NYU Langone Health",
 
 nyccc <- sf::st_transform(aeac_ccc[aeac_ccc$name %in% nycnci[c(1:2, 5:8)], ], crs = 2263)
 nycc <- sf::st_transform(aeac_cc[aeac_cc$name %in% nycnci[3:4], ], crs = 2263)
+nycc$type <- "Clinical Cancer Center" # rename type for figure
 nynci <- rbind(nyccc, nycc)
 nyc <- sf::st_transform(aeac_c[aeac_c$name %in% nycnci, ], crs = 2263)
+nyc$type <- ifelse(nyc$type == "Cancer Center", "Clinical Cancer Center", nyc$type) # rename type for figure
 
 #########################
 # SUPPLEMENTAL FIGURE 1 #
@@ -292,5 +311,7 @@ ggplot2::ggsave(filename = "figures/CEBP_Supplemental1.png",
                 width = 8*f,
                 height = 4*f,
                 dpi = 1000)
+
+# NOTE: Post-processing was conducted in a separate graphical software to add figure caption
 
 # --------------- END OF CODE --------------- #

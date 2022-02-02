@@ -41,6 +41,9 @@ rsconnect/
 
 # Data
 cb_2018_us_nation_5m*
+NCI_Cancer_Center_Point*
+NCI_Catchment_Area*
+US_County*
 /data
 
 # Figures

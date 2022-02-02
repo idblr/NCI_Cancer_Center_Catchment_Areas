@@ -1,8 +1,9 @@
-## A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program
+A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program <img src="hex/hex.png" width="120" align="right" />
+===================================================
 
 ![license](https://img.shields.io/badge/license-apache-yellow)
 
-**Date repository last updated**: January 31, 2022
+**Date repository last updated**: February 2, 2022
 
 ### Authors
 
@@ -66,7 +67,6 @@ The National Cancer Act of 1971 created a process to recognize the leadership, f
 <td><p align="center">TBD</p></td>
 <td>Manuscript published in <a href="https://cebp.aacrjournals.org/">Cancer Epidemiology, Biomarkers & Prevention</a></td>
 </tr>
-
 </tbody>
 <table>
 
@@ -74,9 +74,9 @@ The National Cancer Act of 1971 created a process to recognize the leadership, f
 
 This repository includes R-scripts use to render the geographical figures found in the following peer-reviewed manuscript:
 
-DelNero PF, Buller ID (co-first), Jones RR, Tatalovich Z, Vanderpool RC, Ciolino HP, Croyle RT. A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program. Cancer Epidemiology, Biomarkers & Prevention **2022**; *In Press* Available OnlineFirst at DOI:<a href="https://cebp.aacrjournals.org/content/early/2022/01/31/1055-9965.EPI-21-1230">10.1158/1055-9965.EPI-21-1230</a>.
+DelNero PF, Buller ID, Jones RR, Tatalovich Z, Vanderpool RC, Ciolino HP, Croyle RT. A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program. (January 31, 2022) Cancer Epidemiology, Biomarkers & Prevention, <a href="https://doi.org/10.1158/1055-9965.EPI-21-1230">10.1158/1055-9965.EPI-21-1230</a>.
 
-with a suggested in-text citation as: (DelNero & Buller _et al._, 2022)
+with a suggested in-text citation as: (DelNero & Buller _et al._, 2022) as DelNero and Buller contributed equally to the manuscript.
 
 <table>
 <colgroup>
@@ -113,6 +113,8 @@ with a suggested in-text citation as: (DelNero & Buller _et al._, 2022)
 </tr>
 </tbody>
 <table>
+
+The repository also includes the code and resources to create the project hexsticker.
 
 ### Data availability
 

@@ -6,7 +6,7 @@
 # Created on: January 12, 2022
 #
 # Most recently modified by: @idblr
-# Most recently modified on: January 31, 2022
+# Most recently modified on: February 2, 2022
 #
 # Notes:
 # A) Code to generate Figure 1 in the CEBP Manuscript
@@ -15,11 +15,32 @@
 # D) 2022/01/31: Shapefiles are available for download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
 # -------------------------------------------- #
 
+############
+# PACKAGES #
+############
+
+loadedPackages <- c("cowplot", "dplyr", "ggplot2", "sf", "tigris", "utils")
+suppressMessages(invisible(lapply(loadedPackages, library, character.only = TRUE)))
+
 ####################
 # DATA IMPORTATION #
 ####################
 
-# Use the code found in 'catchments.R' file
+# Option 1: Shapefiles are available to download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
+## After downloading and placing in a subdirectory called "data":
+### A) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
+utils::unzip(zipfile = "data/NCI_Cancer_Center_Point_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
+cancer_centers <- sf::read_sf(dsn = "NCI_Cancer_Center_Point.shp")
+
+### B) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
+utils::unzip(zipfile = "data/NCI_Catchment_Area_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
+catchments <- sf::read_sf(dsn = "NCI_Catchment_Area.shp")
+
+### C) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
+utils::unzip(zipfile = "data/NCI_County_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
+proj_counties <- sf::read_sf(dsn = "US_County.shp")
+
+# Option 2: Use the code found in 'catchments.R' file
 ## Loads seven objects
 ### A) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
 ### B) 'catchments' an 'sf' object of the NCI-Designated Cancer Center Catchment Areas
@@ -28,14 +49,9 @@
 ### E) "proj_l48_counties" an 'sf' object of the 2018 conterminous U.S.
 ### F) "proj_coast" an 'sf' object of the U.S. coastline
 ### G) "not_l48" a 'vector' object of names of non-conterminous U.S. States
-source("code/Catchments.R")
-
-#######################
-# ADDITIONAL PACKAGES #
-#######################
-
-loadedPackages <- c("cowplot", "dplyr", "ggplot2", "sf")
-suppressMessages(invisible(lapply(loadedPackages, library, character.only = TRUE)))
+#source("code/Catchments.R") # uncomment to generate catchment information from source
+# Note: size of catchments are in square kilometers ("area") but downloadable version is in square miles ("Area_Miles")
+# Note: the ID for counties are "GEOID" but downloadable version "FIPSN"
 
 ############
 # SETTINGS #
@@ -48,14 +64,31 @@ sf::sf_use_s2(FALSE)
 # DATA PROCESSING #
 ###################
 
+# Fix FIPS to include leading 0 for states with STATE FIPS < 10
+proj_counties$FIPSN <- stringr::str_pad(proj_counties$FIPSN, 5, "left", "0")
+
+# US Coastline
+# From https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+coast_US_shp <- "https://www2.census.gov/geo/tiger/GENZ2018/shp/cb_2018_us_nation_5m.zip"
+download.file(url = coast_US_shp, destfile = "data/cb_2018_us_nation_5m.zip")
+unzip(zipfile = "data/cb_2018_us_nation_5m.zip")
+coast_US <- sf::st_read(dsn = "cb_2018_us_nation_5m.shp")
+proj_coast <- sf::st_transform(coast_US, crs = 4326)
+
 # Lower 48 Shapefiles
+not_l48 <- c("Commonwealth of the Northern Mariana Islands",
+             "Guam", "American Samoa", "Hawaii", "Alaska",
+             "Puerto Rico", "United States Virgin Islands")
+shp_states <- tigris::states(year = 2018, class = "sf", cb = TRUE)
+proj_states <-  sf::st_transform(shp_states, crs = 4326)
 proj_l48_states <- proj_states[proj_states$NAME %notin% not_l48, ]
 proj_l48s_coast <- sf::st_intersection(proj_l48_states, proj_coast) # clip by US coastal boundary
-proj_l48c_coast <- sf::st_intersection(proj_l48_counties, proj_coast) # clip by US coastal boundary
+#proj_l48c_coast <- sf::st_intersection(proj_l48_counties, proj_coast) # Uncomment for OPTION 2 (clip by US coastal boundary)
+proj_l48c_coast <- proj_counties[proj_counties$STATE %in% proj_l48_states$STUSPS, ]
 
 # Order catchment area by descending size
 ## Will plot larger catchments first (lower level when stacked by ggplot2)
-order_catch <- catchments[order(-catchments$area), ]
+order_catch <- catchments[order(-catchments$Area_Miles), ]
 
 # Transform CRS to Albers Equal Area Conic Projection
 aeac_centers <- sf::st_transform(cancer_centers, crs = 2163) # projected catchment center locations
@@ -64,6 +97,8 @@ aeac_l48s <- sf::st_transform(proj_l48s_coast, crs = 2163) # projected state bou
 aeac_l48c <- sf::st_transform(proj_l48c_coast, crs = 2163) # projected county boundaries
 
 # Separate by NCI designation
+aeac_centers$type <- ifelse(aeac_centers$type == "Cancer Center", "Clinical Cancer Center", aeac_centers$type) # rename type for figure
+aeac_catch$type <- ifelse(aeac_catch$type == "Cancer Center", "Clinical Cancer Center", aeac_catch$type) # rename type for figure
 ## NCI-Designated Cancer Center Locations
 aeac_c <- aeac_centers[aeac_centers$name != "University of Hawai'i Cancer Center", ] 
 ## NCI-Designated Cancer Center Catchments
@@ -88,6 +123,7 @@ pr_bbb <- sf::st_buffer(pr_bb, dist = 50000)
 
 ## Hawai'i
 proj_hi <- sf::st_transform(proj_states[proj_states$NAME == "Hawaii", ], crs = 3759)
+proj_hi_center <- sf::st_transform(cancer_centers[cancer_centers$name == "University of Hawai'i Cancer Center", ], crs = 3759)
 hawaii_bb <- sf::st_as_sfc(sf::st_bbox(proj_hi))
 hawaii_bbb <- sf::st_buffer(hawaii_bb, dist = 10000)
 
@@ -154,7 +190,7 @@ ggm3 <- ggplot2::ggplot() +
                    color = "#D95F02",
                    size = 0.35,
                    alpha = 0.2) +
-  ggplot2::geom_sf(data = proj_centers[proj_centers$name == "University of Hawai'i Cancer Center", ],
+  ggplot2::geom_sf(data =  proj_hi_center ,
                    color = "#D95F02",
                    size = 0.5*f) +
   ggplot2::theme_void()
@@ -180,5 +216,7 @@ ggplot2::ggsave(filename = "figures/CEBP_Figure1.png",
                 width = 8*f,
                 height = 4*f,
                 dpi = 1000)
+
+# NOTE: Post-processing was conducted in a separate graphical software to add figure number
 
 # --------------- END OF CODE --------------- #
