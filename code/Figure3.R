@@ -6,13 +6,14 @@
 # Created on: January 12, 2022
 #
 # Most recently modified by: @idblr
-# Most recently modified on: Febraury 2, 2022
+# Most recently modified on: May 11, 2022
 #
 # Notes:
 # A) Code to generate Figure 3 in the CEBP Manuscript
 # B) For the n=63 Cancer Centers and Comprehensive Cancer Centers only (excludes Basic Laboratories and Pediatric Cancer Centers)
 # C) Definitions as of July 2021
 # D) 2022/01/31: Shapefiles are available for download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
+# E) 2022/05/11: Updated data paths
 # -------------------------------------------- #
 
 ############
@@ -29,16 +30,16 @@ suppressMessages(invisible(lapply(loadedPackages, library, character.only = TRUE
 # Option 1: Shapefiles are available to download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
 ## After downloading and placing in a subdirectory called "data":
 ### A) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
-utils::unzip(zipfile = "data/NCI_Cancer_Center_Point_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
-cancer_centers <- sf::read_sf(dsn = "NCI_Cancer_Center_Point.shp")
+utils::unzip(zipfile = "data/NCI_Cancer_Center_Point_Shapefile.zip", exdir = "data") # Note: Modify for directory with downloaded ZIP file
+cancer_centers <- sf::read_sf(dsn = "data/NCI_Cancer_Center_Point.shp")
 
 ### B) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
-utils::unzip(zipfile = "data/NCI_Catchment_Area_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
-catchments <- sf::read_sf(dsn = "NCI_Catchment_Area.shp")
+utils::unzip(zipfile = "data/NCI_Catchment_Area_Shapefile.zip", exdir = "data") # Note: Modify for directory with downloaded ZIP file
+catchments <- sf::read_sf(dsn = "data/NCI_Catchment_Area.shp")
 
 ### C) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
-utils::unzip(zipfile = "data/NCI_County_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
-proj_counties <- sf::read_sf(dsn = "US_County.shp")
+utils::unzip(zipfile = "data/NCI_County_Shapefile.zip", exdir = "data") # Note: Modify for directory with downloaded ZIP file
+proj_counties <- sf::read_sf(dsn = "data/US_County.shp")
 
 # Option 2: Use the code found in 'catchments.R' file
 ## Loads seven objects
@@ -84,8 +85,8 @@ proj_counties$FIPSN <- stringr::str_pad(proj_counties$FIPSN, 5, "left", "0")
 # From https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
 coast_US_shp <- "https://www2.census.gov/geo/tiger/GENZ2018/shp/cb_2018_us_nation_5m.zip"
 download.file(url = coast_US_shp, destfile = "data/cb_2018_us_nation_5m.zip")
-unzip(zipfile = "data/cb_2018_us_nation_5m.zip")
-coast_US <- sf::st_read(dsn = "cb_2018_us_nation_5m.shp")
+unzip(zipfile = "data/cb_2018_us_nation_5m.zip", exdir = "data")
+coast_US <- sf::st_read(dsn = "data/cb_2018_us_nation_5m.shp")
 proj_coast <- sf::st_transform(coast_US, crs = 4326)
 
 # Lower 48 Shapefiles

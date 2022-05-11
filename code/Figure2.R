@@ -6,13 +6,14 @@
 # Created on: January 12, 2022
 #
 # Most recently modified by: @idblr
-# Most recently modified on: February 2, 2022
+# Most recently modified on: May 10, 2022
 #
 # Notes:
 # A) Code to generate Figure 2 in the CEBP Manuscript
 # B) For the n=63 Cancer Centers and Comprehensive Cancer Centers only (excludes Basic Laboratories and Pediatric Cancer Centers)
 # C) Definitions as of July 2021
 # D) 2022/01/31: Shapefiles are available for download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
+# E) 2022/05/10: Updated data paths
 # -------------------------------------------- #
 
 ############
