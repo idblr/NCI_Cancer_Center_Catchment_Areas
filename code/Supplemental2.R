@@ -29,16 +29,16 @@ suppressMessages(invisible(lapply(loadedPackages, library, character.only = TRUE
 # Option 1: Shapefiles are available to download from the Catchment Areas of NCI-Designated Cancer Centers web application <https://gis.cancer.gov/ncicatchment/>
 ## After downloading and placing in a subdirectory called "data":
 ### A) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
-utils::unzip(zipfile = "data/NCI_Cancer_Center_Point_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
-cancer_centers <- sf::read_sf(dsn = "NCI_Cancer_Center_Point.shp")
+utils::unzip(zipfile = "data/NCI_Cancer_Center_Point_Shapefile.zip", exdir = "data") # Note: Modify for directory with downloaded ZIP file
+cancer_centers <- sf::read_sf(dsn = "data/NCI_Cancer_Center_Point.shp")
 
 ### B) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
-utils::unzip(zipfile = "data/NCI_Catchment_Area_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
-catchments <- sf::read_sf(dsn = "NCI_Catchment_Area.shp")
+utils::unzip(zipfile = "data/NCI_Catchment_Area_Shapefile.zip", exdir = "data") # Note: Modify for directory with downloaded ZIP file
+catchments <- sf::read_sf(dsn = "data/NCI_Catchment_Area.shp")
 
 ### C) 'cancer_centers' an 'sf' object of the NCI-Designated Cancer Center locations
-utils::unzip(zipfile = "data/NCI_County_Shapefile.zip") # Note: Modify for directory with downloaded ZIP file
-proj_counties <- sf::read_sf(dsn = "US_County.shp")
+utils::unzip(zipfile = "data/NCI_County_Shapefile.zip", exdir = "data") # Note: Modify for directory with downloaded ZIP file
+proj_counties <- sf::read_sf(dsn = "data/US_County.shp")
 
 # Option 2: Use the code found in 'catchments.R' file
 ## Loads seven objects

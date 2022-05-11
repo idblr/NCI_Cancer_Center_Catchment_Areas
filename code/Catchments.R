@@ -94,8 +94,8 @@ proj_l48_counties <- sf::st_transform(shp_l48_counties, crs = 4326)
 # From https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
 coast_US_shp <- "https://www2.census.gov/geo/tiger/GENZ2018/shp/cb_2018_us_nation_5m.zip"
 download.file(url = coast_US_shp, destfile = "data/cb_2018_us_nation_5m.zip")
-unzip(zipfile = "data/cb_2018_us_nation_5m.zip")
-coast_US <- sf::st_read(dsn = "cb_2018_us_nation_5m.shp")
+unzip(zipfile = "data/cb_2018_us_nation_5m.zip", exdir = "data")
+coast_US <- sf::st_read(dsn = "data/cb_2018_us_nation_5m.shp")
 proj_coast <- sf::st_transform(coast_US, crs = 4326)
 coast <- sf::st_intersection(union_l48, proj_coast) # clip by US coastal boundary
 coast <- sf::st_collection_extract(coast, "POLYGON") 
