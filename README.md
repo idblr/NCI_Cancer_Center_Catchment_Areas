@@ -1,9 +1,10 @@
 A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program <img src="hex/hex.png" width="120" align="right" />
 ===================================================
 
-![license](https://img.shields.io/badge/license-apache-yellow)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![GitHub last commit](https://img.shields.io/github/last-commit/idblr/NCI_Cancer_Center_Catchment_Areas)
 
-**Date repository last updated**: May 11, 2022
+**Date repository last updated**: August 08, 2022
 
 ### Authors
 
@@ -41,29 +42,29 @@ The National Cancer Act of 1971 created a process to recognize the leadership, f
 </thead>
 <tbody>
 <td><p align="center">2016-2021</p></td>
-<td>Fiscal years of the <a href="https://www.cancer.gov/research/infrastructure/cancer-centers/">P30 Cancer Center Support Grant</a> with NCI-Designated Cancer Center catchment areas</td>
+<td>Fiscal years of the <a href="https://www.cancer.gov/research/infrastructure/cancer-centers/">P30 Cancer Center Support Grant</a> with NCI-Designated Cancer Center catchment areas.</td>
 </tr>
 <td><p align="center">2015-2019</p></td>
-<td><a href="https://www.census.gov/newsroom/press-kits/2020/acs-5-year.html/">U.S. Census Bureau American Community Survey</a> used for data linkages</td>
+<td><a href="https://www.census.gov/newsroom/press-kits/2020/acs-5-year.html/">U.S. Census Bureau American Community Survey</a> used for data linkages.</td>
 </tr>
 <td><p align="center">2018</p></td>
-<td><a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2018.html/">U.S. Census Bureau Topologically Integrated Geographic Encoding and Referencing (TIGER)/Line</a> database used for generating the NCI-Designated Cancer Center catchment area boundaries</td>
+<td><a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2018.html/">U.S. Census Bureau Topologically Integrated Geographic Encoding and Referencing (TIGER)/Line</a> database used for generating the NCI-Designated Cancer Center catchment area boundaries.</td>
 </tr>
 <td><p align="center">March 2020</p></td>
 <td>Project Initiation</td>
 </tr>
 <td><p align="center">May 2021</p></td>
-<td>NCI-Designated Cancer Center directors were asked for updates to their center's catchment area definition</td>
+<td>NCI-Designated Cancer Center directors were asked for updates to their center's catchment area definition.</td>
 </tr>
 <td><p align="center">October 2021</p></td>
-<td>Initial manuscript submission to <a href="https://cebp.aacrjournals.org/">Cancer Epidemiology, Biomarkers & Prevention</a> for peer-review</td>
+<td>Initial manuscript submission to <a href="https://cebp.aacrjournals.org/">Cancer Epidemiology, Biomarkers & Prevention</a> for peer-review.</td>
 </tr>
 <td><p align="center">January 2022</p></td>
 <td>Manuscript accepted by <a href="https://cebp.aacrjournals.org/">Cancer Epidemiology, Biomarkers & Prevention</a> and launch of the <a href="https://gis.cancer.gov/ncicatchment/">Catchment Areas of NCI-Designated Cancer Centers</a> web application (see data availability section below).</td>
 </tr>
 </tr>
 <td><p align="center">May 2022</p></td>
-<td>Manuscript published in <a href="https://doi.org/10.1158/1055-9965.EPI-21-1230">Cancer Epidemiology, Biomarkers & Prevention</a>. Featured as the cover article for <a href="https://aacrjournals.org/cebp/issue/31/5">Volume 31, Issue 5</a>. </a></td>.
+<td>Manuscript published in <a href="https://doi.org/10.1158/1055-9965.EPI-21-1230">Cancer Epidemiology, Biomarkers & Prevention</a>. Featured as the cover article for <a href="https://aacrjournals.org/cebp/issue/31/5">Volume 31, Issue 5</a>.</a></td>
 </tr>
 </tbody>
 <table>
@@ -72,7 +73,7 @@ The National Cancer Act of 1971 created a process to recognize the leadership, f
 
 This repository includes R-scripts use to render the geographical figures found in the following peer-reviewed manuscript:
 
-DelNero PF, Buller ID, Jones RR, Tatalovich Z, Vanderpool RC, Ciolino HP, Croyle RT. (2022) A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program. _Cancer Epidemiology, Biomarkers & Prevention_, 31(5):965-971. DOI:<a href="https://doi.org/10.1158/1055-9965.EPI-21-1230">10.1158/1055-9965.EPI-21-1230</a> PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/35101903/">35101903</a>
+DelNero PF, Buller ID, Jones RR, Tatalovich Z, Vanderpool RC, Ciolino HP, Croyle RT. (2022) A National Map of NCI-Designated Cancer Center Catchment Areas on the 50th Anniversary of the Cancer Centers Program. _Cancer Epidemiology, Biomarkers & Prevention_, 31(5):965-971. DOI:<a href="https://doi.org/10.1158/1055-9965.EPI-21-1230">10.1158/1055-9965.EPI-21-1230</a> PMID:<a href="https://pubmed.ncbi.nlm.nih.gov/35101903/">35101903</a>.
 
 with a suggested in-text citation as: (DelNero & Buller _et al._, 2022) as DelNero and Buller contributed equally to the manuscript.
 
@@ -120,4 +121,4 @@ Shapefiles for the NCI-Designated Cancer Center locations and catchment areas ar
 
 ### Questions?
 
-For questions about the manuscript or NCI-Designated Cancer Center catchment areas please e-mail the corresponding author [Dr. Robin C. Vanderpool](mailto:robin.vanderpool@nih.gov)
+For questions about the manuscript or NCI-Designated Cancer Center catchment areas please e-mail the corresponding author [Dr. Robin C. Vanderpool](mailto:robin.vanderpool@nih.gov).
